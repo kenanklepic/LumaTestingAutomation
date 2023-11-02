@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.js"
+    
   },
   "keywords": [],
-  "author": "",
+  "author": "kenan",
   "license": "ISC",
   "devDependencies": {
     "@wdio/allure-reporter": "^8.21.0",
