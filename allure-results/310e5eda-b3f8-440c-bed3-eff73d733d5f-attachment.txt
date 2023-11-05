@@ -1,3 +1,0 @@
-{
-  "text": "InputEmail@eft.com"
-}

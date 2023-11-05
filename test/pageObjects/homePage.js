@@ -15,6 +15,22 @@ class HomePage extends Page {
         await this.registrationLink.click();
     }
 
+    get signUpLink() {
+        return $('.authorization-link');
+    }
+
+    get welcomeMessage() {
+        return $('.logged-in');
+    }
+
+    get productList() {
+        return $$('.product-item');
+    }
+
+     productAtIndex (index) {
+        return this.productList[index];
+    }
+
 }
 
 module.exports = new HomePage();

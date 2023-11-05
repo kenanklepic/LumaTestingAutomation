@@ -13,6 +13,10 @@ class AccountPage extends Page {
         return $('.messages');
     }
 
+    get welcomeMessage() {
+        return $('.logged-in');
+    }
+
 }
 
 module.exports = new AccountPage();
