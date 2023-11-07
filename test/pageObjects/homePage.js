@@ -31,6 +31,14 @@ class HomePage extends Page {
         return this.productList[index];
     }
 
+    get searchBar() {
+        return $('#search');
+    }
+
+    get searchBtn() {
+        return $('.action.search');
+    }
+
 }
 
 module.exports = new HomePage();

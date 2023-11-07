@@ -17,6 +17,14 @@ class AccountPage extends Page {
         return $('.logged-in');
     }
 
+    get actionSwitchBtn() {
+        return $('.customer-name');
+    }
+
+    get signOutBtn() {
+        return $('.authorization-link');
+    }
+
 }
 
 module.exports = new AccountPage();

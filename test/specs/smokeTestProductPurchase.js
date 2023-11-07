@@ -6,6 +6,15 @@ const ProductPage = require('../pageObjects/productPage')
 const ShippingPage = require('../pageObjects/shippingPage')
 const PaymentsPage = require('../pageObjects/paymentsPage')
 const SuccessPage = require('../pageObjects/successPage')
+const RegistrationPage = require('../pageObjects/registrationPage')
+const SearchPage = require('../pageObjects/searchPage')
+
+//enter credentials
+const FirstName = 'Enter Value';
+const LastName = 'Enter Value';
+const Email = 'Enter Value';
+const Password = 'Enter Value';
+const ConfirmPassword = 'Enter Value';
 
 //function that checks url 
 const URLcheck = async (url) => {
@@ -13,21 +22,53 @@ const URLcheck = async (url) => {
 };
 
 //function that checks if the value of an element is 0
-async function waitForCounterNumberNotZero(element) {
+async function waitForCounterNumberNotToBeZero(element) {
     if ((await element.getText()) === '0') {
         await browser.pause(2000);
     }
 }
 
+async function Registration() {
 
-describe('My shopping ', () => {
+        await RegistrationPage.open() //open registration page
+        await expect(RegistrationPage.pageTitle).toHaveTextContaining('Create New Customer Account') //check if account page was opened
 
-    it('should allow the user to purchase products', async () => {
+        await RegistrationPage.register(FirstName, LastName, Email, Password, ConfirmPassword) //functions enters credentials into appropriate fields
+
+        //checks if the values were inputted into appropriate fields
+        expect (await RegistrationPage.inputFistName.getValue()).toEqual(FirstName)
+        expect (await RegistrationPage.inputLastName.getValue()).toEqual(LastName)
+        expect (await RegistrationPage.inputEmail.getValue()).toEqual(Email)
+        expect (await RegistrationPage.inputPassword.getValue()).toEqual(Password)
+        expect (await RegistrationPage.inputConfirmPassword.getValue()).toEqual(ConfirmPassword)
+
+        await RegistrationPage.btnSubmit.click() //click registration button
+
+        //checks if the registration was successful
+        await expect(AccountPage.successMessage).toBeExisting()
+        await expect(AccountPage.successMessage).toHaveTextContaining('Thank you for registering with Main Website Store.')
+
+        await AccountPage.actionSwitchBtn.click()
+        await AccountPage.signOutBtn.click()
+
+}
+
+
+describe('My smoke test - product pruchase ', () => {
+
+    beforeAll(async() => {
+        await Registration();
+    });
+
+    it('should allow the user to register, log in, search for a product, select a product, add product to cart and finalize the checkout with successful purchase', async () => {
 
         //enter valid credentials
-        let Email = 'pepe@mancity.com';
-        let Password = 'Pass123456';
         let Qty = '1';
+        let streetAddress = 'Enter Value';
+        let city = 'Enter Value';
+        let postalCode = 'Enter Value';
+        let phoneNum = 'Enter Value';
+        let SearchValue = 'Yoga';
 
         await HomePage.open() // open home page
         await URLcheck('https://magento.softwaretestingboard.com/') //checks if the home page was opened
@@ -52,8 +93,14 @@ describe('My shopping ', () => {
         await expect(HomePage.welcomeMessage).toBeExisting()
 
 
+        await browser.pause(500)
+        await HomePage.searchBar.setValue(SearchValue)
+        await expect (await HomePage.searchBar.getValue()).toEqual(SearchValue)
+        await expect (HomePage.searchBtn).toBeExisting()
+        await HomePage.searchBtn.click()
+
         await browser.pause(200)
-        await HomePage.productAtIndex(0).click() //select a product
+        await SearchPage.productAtIndex(0).click()
 
         await ProductPage.addToCart(Qty) //choose options for the product
 
@@ -68,7 +115,7 @@ describe('My shopping ', () => {
         await expect(ProductPage.successMessage).toBeExisting()
 
         //check items in cart
-        await waitForCounterNumberNotZero(ProductPage.counterNumber)
+        await waitForCounterNumberNotToBeZero(ProductPage.counterNumber)
         await expect(await ProductPage.counterNumber.getText()).not.toEqual('0')
         
         await ProductPage.cartBtn.click()
@@ -76,8 +123,19 @@ describe('My shopping ', () => {
 
         await ProductPage.proceedToCheckoutBtn.click()
 
-        await browser.pause(5000)
+        await browser.pause(6000)
         await URLcheck('https://magento.softwaretestingboard.com/checkout/#shipping') //check if the shipping page was opened
+
+
+        await ShippingPage.open()
+        await ShippingPage.inputShippingDetails(streetAddress, city, postalCode, phoneNum)
+        expect (await ShippingPage.InputStreetAddress.getValue()).toEqual(streetAddress)
+        expect (await ShippingPage.InputCity.getValue()).toEqual(city)
+        expect (await ShippingPage.InputPostalCode.getValue()).toEqual(postalCode)
+        expect (await ShippingPage.InputPhoneNumber.getValue()).toEqual(phoneNum)
+        expect (await ShippingPage.checkboxShippingMethod.getAttribute('checked')).toEqual('true')
+        //await browser.pause(10000)
+
         
         await ShippingPage.nextBtn.click()
 
