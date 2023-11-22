@@ -20,10 +20,10 @@ class LoginPage extends Page {
         return $('#send2')
     }
 
-    async login (email, password) {
+    /*async login (email, password) {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-    }
+    }*/
 
 }
 

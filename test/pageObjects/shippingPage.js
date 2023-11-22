@@ -39,7 +39,7 @@ class ShippingPage extends Page {
         return $('[value="1"]');
     }
 
-    async inputShippingDetails(streetAddress, city, postalCode, phoneNum) {
+    /*async inputShippingDetails(streetAddress, city, postalCode, phoneNum) {
         await this.InputStreetAddress.setValue(streetAddress);
         await this.InputCity.setValue(city);
         await this.menuRegion.click();
@@ -47,7 +47,7 @@ class ShippingPage extends Page {
         await this.InputPostalCode.setValue(postalCode);
         await this.InputPhoneNumber.setValue(phoneNum);
         await this.checkboxShippingMethod.click();
-    }
+    }*/
 
 }
 
