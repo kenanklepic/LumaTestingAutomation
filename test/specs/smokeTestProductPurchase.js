@@ -3,6 +3,8 @@ const pageObjects = require('../pageObjects/pageObjects');
 const utilities = require('../utilities/utilities');
 const config = require('../config/config');
 const commonUtility = require('../utilities/commonUtility');
+const axios = require('axios');
+
 
 const {
     HomePage,
@@ -51,6 +53,26 @@ describe('My smoke test - product pruchase ', () => {
         await expect(HomePage.welcomeMessage).toBeExisting()
 })
 
+
+    it("should Get HomePage Logo",async()=>{
+
+        const response = await axios.get('https://magento.softwaretestingboard.com/pub/static/version1695896754/frontend/Magento/luma/en_US/images/logo.svg', {
+        });
+        console.log(response.data);
+        expect(response.status).toEqual(200); 
+
+    })
+
+    it("should Get HomePage Logo",async()=>{
+
+        const response = await axios.get('https://magento.softwaretestingboard.com/pub/static/version1695896754/frontend/Magento/luma/en_US/images/logo.svg', {
+        });
+        console.log(response.data);
+        expect(response.status).toEqual(200); 
+        
+    })
+
+    
     it('should allow the user to search for a product and select a product,', async () => {
 
         await browser.pause(500)

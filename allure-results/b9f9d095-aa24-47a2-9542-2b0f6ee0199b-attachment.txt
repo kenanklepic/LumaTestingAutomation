@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": ".item.product.product-item"
-}
