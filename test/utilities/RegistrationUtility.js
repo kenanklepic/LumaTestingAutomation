@@ -2,7 +2,7 @@ const { expect } = require('@wdio/globals')
 const RegistrationPage = require('../pageObjects/registrationPage')
 const AccountPage = require('../pageObjects/accountPage')
 
-class RegistrationMethod {
+class RegistrationUtility {
 
     //method that class all other registration methods
 
@@ -30,8 +30,21 @@ class RegistrationMethod {
         await expect(AccountPage.successMessage).toHaveTextContaining('Thank you for registering with Main Website Store.')
     }
 
+    async registerUser(FirstName, LastName, Email, Password, ConfirmPassword) {
+        await this.inputRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword)
+
+        await this.checkRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword)
+    
+        await RegistrationPage.btnSubmit.click() //click registration button
+    
+        await this.checkRegistration()
+    
+        await AccountPage.actionSwitchBtn.click()
+        await AccountPage.signOutBtn.click()
+    }
+
 
 
 }
 
-module.exports = new RegistrationMethod();
+module.exports = new RegistrationUtility();

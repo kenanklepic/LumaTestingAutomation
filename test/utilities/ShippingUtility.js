@@ -1,7 +1,7 @@
 const { expect } = require('@wdio/globals')
 const ShippingPage = require('../pageObjects/shippingPage')
 
-class ShippingMethod {
+class ShippingUtility {
 
     async inputShippingDetails(streetAddress, city, postalCode, phoneNum) {
 
@@ -29,4 +29,4 @@ class ShippingMethod {
 
 }
 
-module.exports = new ShippingMethod();
+module.exports = new ShippingUtility();

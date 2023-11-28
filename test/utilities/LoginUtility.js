@@ -1,7 +1,7 @@
 const { expect } = require('@wdio/globals')
 const LoginPage = require('../pageObjects/loginPage')
 
-class LoginMethod {
+class LoginUtility {
 
     async inputLoginDetails(email, password) {
 
@@ -21,4 +21,4 @@ class LoginMethod {
 
 }
 
-module.exports = new LoginMethod();
+module.exports = new LoginUtility();

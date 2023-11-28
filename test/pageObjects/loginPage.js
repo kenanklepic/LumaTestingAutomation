@@ -20,10 +20,18 @@ class LoginPage extends Page {
         return $('#send2')
     }
 
-    /*async login (email, password) {
+    async login (email, password) {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-    }*/
+    }
+
+    async checkLoginDetails(email, password) {
+
+        expect (await this.inputEmail.getValue()).toEqual(email)
+        expect (await this.inputPassword.getValue()).toEqual(password)
+
+    }
+
 
 }
 

@@ -1,7 +1,7 @@
 const { expect } = require('@wdio/globals')
 const ProductPage = require('../pageObjects/productPage')
 
-class addToCartMethod {
+class CartUtility {
 
     async inputProductDetails(qty) {
 
@@ -23,4 +23,4 @@ class addToCartMethod {
 
 }
 
-module.exports = new addToCartMethod();
+module.exports = new CartUtility();
