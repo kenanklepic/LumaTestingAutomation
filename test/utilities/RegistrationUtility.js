@@ -43,8 +43,5 @@ class RegistrationUtility {
         await AccountPage.signOutBtn.click()
     }
 
-
-
 }
-
 module.exports = new RegistrationUtility();

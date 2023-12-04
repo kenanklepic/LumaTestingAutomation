@@ -35,12 +35,5 @@ class ProductPage extends Page {
         return $('.counter.qty .counter-number')
     }
 
-    /*async addToCart(qty) {
-        await this.sizeBtn.click();
-        await this.colorBtn.click();
-        await this.qtyInputField.setValue(qty);
-    }*/
-
 }
-
 module.exports = new ProductPage();

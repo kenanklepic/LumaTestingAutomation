@@ -49,7 +49,7 @@ describe('My smoke test - product pruchase ', () => {
         await expect (LoginPage.signInBtn).toBeExisting()
         await LoginPage.signInBtn.click()
         await expect(HomePage.welcomeMessage).toBeExisting()
-})
+    })
 
     it('should allow the user to search for a product and select a product,', async () => {
 
@@ -59,10 +59,8 @@ describe('My smoke test - product pruchase ', () => {
         await expect (HomePage.searchBtn).toBeExisting()
         await HomePage.searchBtn.click()
 
-        //await browser.pause(2000)
         await SearchPage.productAtIndex(0).click()
-        //await browser.pause(10000)
-})
+    })
 
     it('should allow the user to select product details and add product to cart', async () => {
         await CartUtility.inputProductDetails(Qty)
@@ -76,7 +74,7 @@ describe('My smoke test - product pruchase ', () => {
         expect (await ProductPage.cartBtn.getAttribute('class')).toEqual('action showcart active')
 
         await ProductPage.proceedToCheckoutBtn.click()
-})
+    })
 
     it('should allow the user to input shipping details and to finalize the checkout with successful purchase', async () => {
         await browser.pause(6000)
@@ -100,6 +98,6 @@ describe('My smoke test - product pruchase ', () => {
 
         await expect(SuccessPage.successfulPurchaseMessage).toHaveTextContaining('Thank you for your purchase!')
 
-})
-
     })
+
+})

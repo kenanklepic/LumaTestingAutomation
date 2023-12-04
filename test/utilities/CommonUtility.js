@@ -1,16 +1,9 @@
-
 const { expect, browser } = require('@wdio/globals');
 
 class CommonUtility {
   async URLcheck(url) {
     expect(await browser.getUrl()).toContain(url);
   }
-
-  /*async waitForCounterNumberNotToBeZero(element) {
-    if ((await element.getText()) === '0') {
-      await browser.pause(2000);
-    }
-  }*/
 
   async waitForCounterNumberNotToBeZero(element) {
     await browser.waitUntil(
@@ -19,13 +12,12 @@ class CommonUtility {
         return text !== '0';
       },
       {
-        timeout: 10000, // Set your desired timeout
+        timeout: 10000, 
         timeoutMsg: 'Counter did not become non-zero within the specified time',
-        interval: 500 // Set your desired interval
+        interval: 500 
       }
     );
   }
-
   
 }
 

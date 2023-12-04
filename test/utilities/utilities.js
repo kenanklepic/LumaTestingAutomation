@@ -1,13 +1,10 @@
 
-const RegistrationUtility = require('../utilities/RegistrationUtility')
-const LoginUtility = require('../utilities/LoginUtility')
-const ShippingUtility = require('../utilities/ShippingUtility')
-const CartUtility = require('../utilities/CartUtility')
+const RegistrationUtility = require('./registrationUtility')
+const ShippingUtility = require('./shippingUtility')
+const CartUtility = require('../utilities/cartUtility')
 
 module.exports = {
     RegistrationUtility,
-    LoginUtility,
     ShippingUtility,
     CartUtility,
-
 };

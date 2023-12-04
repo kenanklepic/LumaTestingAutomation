@@ -39,16 +39,6 @@ class ShippingPage extends Page {
         return $('[value="1"]');
     }
 
-    /*async inputShippingDetails(streetAddress, city, postalCode, phoneNum) {
-        await this.InputStreetAddress.setValue(streetAddress);
-        await this.InputCity.setValue(city);
-        await this.menuRegion.click();
-        await this.regionToSelect.click();
-        await this.InputPostalCode.setValue(postalCode);
-        await this.InputPhoneNumber.setValue(phoneNum);
-        await this.checkboxShippingMethod.click();
-    }*/
-
 }
 
 module.exports = new ShippingPage();

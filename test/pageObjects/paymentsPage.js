@@ -11,7 +11,5 @@ class PaymentsPage extends Page {
         return $('.action.primary.checkout');
     }
 
-
 }
-
 module.exports = new PaymentsPage();

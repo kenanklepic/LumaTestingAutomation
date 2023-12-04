@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#top-cart-btn-checkout"
-}

@@ -8,8 +8,6 @@ class AccountPage extends Page {
     }
 
     get successMessage() {
-        //const element = document.querySelector('[data-ui-id="message-success"]');
-        //return element;
         return $('.messages');
     }
 
@@ -26,5 +24,4 @@ class AccountPage extends Page {
     }
 
 }
-
 module.exports = new AccountPage();
