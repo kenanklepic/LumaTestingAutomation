@@ -34,6 +34,6 @@ class ProductPage extends Page {
     get counterNumber() {
         return $('.counter.qty .counter-number')
     }
-
 }
+
 module.exports = new ProductPage();

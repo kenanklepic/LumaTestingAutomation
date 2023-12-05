@@ -13,7 +13,6 @@ class SearchPage extends Page {
 
      productAtIndex (index) {
         return this.productList[index];
-    }
-    
+    }  
 }
 module.exports = new SearchPage();

@@ -34,7 +34,6 @@ describe('My smoke test - product pruchase ', () => {
 
     it('should allow the user log into valid account', async () => {
 
-
         await HomePage.open() 
         await URLcheck('https://magento.softwaretestingboard.com/') 
 
@@ -88,7 +87,6 @@ describe('My smoke test - product pruchase ', () => {
         await ShippingUtility.checkShippingDetails(streetAddress, city, postalCode, phoneNum)
         await ShippingPage.nextBtn.click()
 
-
         await browser.pause(5000)
         await URLcheck('https://magento.softwaretestingboard.com/checkout/#payment') 
 
@@ -99,5 +97,4 @@ describe('My smoke test - product pruchase ', () => {
         await expect(SuccessPage.successfulPurchaseMessage).toHaveTextContaining('Thank you for your purchase!')
 
     })
-
 })

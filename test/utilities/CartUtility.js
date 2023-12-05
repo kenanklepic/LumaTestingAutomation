@@ -18,9 +18,6 @@ class CartUtility {
         expect (await ProductPage.qtyInputField.getValue()).toEqual(qty)
 
     }
-
-
-
 }
 
 module.exports = new CartUtility();

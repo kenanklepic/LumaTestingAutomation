@@ -16,9 +16,6 @@ class LoginUtility {
         expect (await LoginPage.inputPassword.getValue()).toEqual(password)
 
     }
-
-
-
 }
 
 module.exports = new LoginUtility();

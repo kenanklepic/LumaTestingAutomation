@@ -20,7 +20,6 @@ class ShippingUtility {
         expect (await ShippingPage.InputPhoneNumber.getValue()).toEqual(phoneNum)
         expect (await ShippingPage.checkboxShippingMethod.getAttribute('checked')).toEqual('true')
     }
-
 }
 
 module.exports = new ShippingUtility();

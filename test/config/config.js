@@ -1,4 +1,3 @@
-
 module.exports = {
 
     credentials: {
@@ -20,6 +19,5 @@ module.exports = {
     searchDetails: {
         searchValue: 'Josie yoga jacket',
     }
-
-  };
+};
   

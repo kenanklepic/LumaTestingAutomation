@@ -38,7 +38,6 @@ class ShippingPage extends Page {
     get regionToSelect() {
         return $('[value="1"]');
     }
-
 }
 
 module.exports = new ShippingPage();

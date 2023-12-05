@@ -51,6 +51,5 @@ class RegistrationPage extends Page {
     async clickRegister () {
         (await this.btnSubmit).click();
     }
-    
 }
 module.exports = new RegistrationPage();

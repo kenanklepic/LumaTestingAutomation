@@ -22,6 +22,6 @@ class AccountPage extends Page {
     get signOutBtn() {
         return $('.authorization-link');
     }
-
 }
+
 module.exports = new AccountPage();

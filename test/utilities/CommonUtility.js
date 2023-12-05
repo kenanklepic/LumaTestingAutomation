@@ -18,7 +18,6 @@ class CommonUtility {
       }
     );
   }
-  
 }
 
 module.exports = new CommonUtility();
