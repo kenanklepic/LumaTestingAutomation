@@ -38,7 +38,5 @@ class HomePage extends Page {
     get searchBtn() {
         return $('.action.search');
     }
-
 }
-
 module.exports = new HomePage();

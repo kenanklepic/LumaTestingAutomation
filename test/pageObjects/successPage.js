@@ -10,7 +10,6 @@ class SuccessPage extends Page {
     get successfulPurchaseMessage() {
         return $('.base');
     }
-
 }
 
 module.exports = new SuccessPage();

@@ -25,6 +25,9 @@ class LoginPage extends Page {
         await this.inputPassword.setValue(password);
     }
 
+    async checkLoginDetails(email, password) {
+        expect (await this.inputEmail.getValue()).toEqual(email)
+        expect (await this.inputPassword.getValue()).toEqual(password)
+    }
 }
-
 module.exports = new LoginPage();

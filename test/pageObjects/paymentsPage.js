@@ -10,8 +10,5 @@ class PaymentsPage extends Page {
     get placeOrderBtn() {
         return $('.action.primary.checkout');
     }
-
-
 }
-
 module.exports = new PaymentsPage();
