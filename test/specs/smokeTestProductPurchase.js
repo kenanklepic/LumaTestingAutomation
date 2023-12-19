@@ -3,6 +3,8 @@ const pageObjects = require('../pageObjects/pageObjects');
 const utilities = require('../utilities/utilities');
 const config = require('../config/config');
 const commonUtility = require('../utilities/commonUtility');
+const axios = require('axios');
+
 
 const {
     HomePage,
@@ -50,6 +52,41 @@ describe('My smoke test - product pruchase ', () => {
         await expect(HomePage.welcomeMessage).toBeExisting()
     })
 
+
+    it("should Get HomePage Logo",async()=>{
+
+        const response = await axios.get('https://magento.softwaretestingboard.com/pub/static/version1695896754/frontend/Magento/luma/en_US/images/logo.svg', {
+        });
+        console.log(response.data);
+        expect(response.status).toEqual(200); 
+
+    })
+
+    it("should POST HomePage Logo",async()=>{
+
+        const response = await axios.get('https://magento.softwaretestingboard.com/pub/static/version1695896754/frontend/Magento/luma/en_US/images/logo.svg', {
+        });
+        console.log(response.data);
+        expect(response.status).toEqual(200); 
+        
+    })
+
+     it("should POST product to compare list", async () => {
+        var response = await axios.post(`https://magento.softwaretestingboard.com/wishlist/index/add/`,
+            {
+                "product": "1380",
+                "uenc": "aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS9qdW5vLWphY2tldC5odG1s",
+                "form_key": "7Gdj2O1KlDnWRqxc",
+            },
+            {
+                headers: {
+                    "Location": "https://magento.softwaretestingboard.com/wishlist/index/index/wishlist_id/94540/",
+                }
+            })
+        expect(response.status).toEqual(200);
+    })
+
+    
     it('should allow the user to search for a product and select a product,', async () => {
 
         await browser.pause(500)
