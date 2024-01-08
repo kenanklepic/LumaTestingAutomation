@@ -39,6 +39,31 @@ class RegistrationPage extends Page {
         return $('.messages');
     }
 
+    get emailErrorMessage() {
+        return $('#email_address-error');
+    }
+
+    get passwordErrorMessage() {
+        return $('#password-error');
+    }
+
+    get firstNameErrorMessage() {
+        return $('#firstname-error');
+    }
+
+    get lastNameErrorMessage() {
+        return $('#lastname-error');
+    }
+
+    get errorMessages() {
+        return [
+          this.emailErrorMessage,
+          this.passwordErrorMessage,
+          this.firstNameErrorMessage,
+          this.lastNameErrorMessage
+        ];
+      }
+
     async register (firstName, lastName, email, password, confirmPassword) {
         await this.inputFistName.setValue(firstName);
         await this.inputLastName.setValue(lastName);

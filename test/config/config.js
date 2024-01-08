@@ -6,6 +6,9 @@ module.exports = {
         Email: 'Enter Value',
         Password: 'Enter Value',
         ConfirmPassword: 'Enter Value',
+        InvalidEmail: 'invalidEmail',
+        InvalidPassord: 'p',
+        ConfirmInvalidPassword: 'p',
     },
 
     shippingDetails: {

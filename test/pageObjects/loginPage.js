@@ -20,6 +20,25 @@ class LoginPage extends Page {
         return $('#send2')
     }
 
+    get signUpErrorMessage() {
+        return $('.page.messages');
+    }
+
+    get emailErrorMessage() {
+        return $('#email-error');
+    }
+
+    get passwordErrorMessage() {
+        return $('#pass-error');
+    }
+
+    get errorMessages() {
+        return [
+          this.emailErrorMessage,
+          this.passwordErrorMessage
+        ];
+      }
+
     async login (email, password) {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);

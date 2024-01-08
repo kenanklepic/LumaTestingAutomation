@@ -5,6 +5,16 @@ class CommonUtility {
     expect(await browser.getUrl()).toContain(url);
   }
 
+  async checkIfElementIsExisting(element) {
+    await expect(element).toBeExisting();
+  }
+
+  async checkIfElementsAreExisting(elements) {
+    for (const element of elements) {
+      await expect(element).toBeExisting();
+    }
+  }
+
   async waitForCounterNumberNotToBeZero(element) {
     await browser.waitUntil(
       async () => {
