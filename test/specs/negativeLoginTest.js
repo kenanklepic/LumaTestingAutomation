@@ -7,7 +7,6 @@ const commonUtility = require('../utilities/commonUtility');
 const { LoginPage } = pageObjects;
 const { LoginUtility } = utilities;
 const { InvalidEmail, InvalidPassord, Password, Email} = config.credentials;
-const { checkIfElementIsExisting, checkIfElementsAreExisting } = commonUtility;
 
 describe('Negative login tests', () => {
 
@@ -17,7 +16,7 @@ describe('Negative login tests', () => {
         await LoginUtility.inputLoginDetails(InvalidEmail, Password)
         await LoginPage.checkLoginDetails(InvalidEmail, Password)
         await LoginPage.signInBtn.click()
-        await checkIfElementIsExisting(LoginPage.emailErrorMessage)
+        await LoginPage.emailErrorMessage.checkIfElementIsExisting()
     })
 
     it('should not login with invalid password', async () => {
@@ -26,14 +25,16 @@ describe('Negative login tests', () => {
         await LoginUtility.inputLoginDetails(Email, InvalidPassord)
         await LoginPage.checkLoginDetails(Email, InvalidPassord)
         await LoginPage.signInBtn.click()
-        await checkIfElementIsExisting(LoginPage.signUpErrorMessage)
+        await LoginPage.signUpErrorMessage.checkIfElementIsExisting()
     })
 
     it('should not login without all required fields being filled', async () => {
 
         await LoginPage.open()
         await LoginPage.signInBtn.click()
-        await checkIfElementsAreExisting(LoginPage.errorMessages)
+        await LoginPage.emailErrorMessage.checkIfElementIsExisting()
+        await LoginPage.passwordErrorMessage.checkIfElementIsExisting()
+
     })
 
 })

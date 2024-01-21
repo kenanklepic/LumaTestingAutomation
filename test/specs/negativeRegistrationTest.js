@@ -7,7 +7,6 @@ const commonUtility = require('../utilities/commonUtility');
 const { RegistrationPage } = pageObjects;
 const { RegistrationUtility } = utilities;
 const { FirstName, LastName, Email, Password, ConfirmPassword, InvalidEmail, InvalidPassord, ConfirmInvalidPassword} = config.credentials;
-const { checkIfElementIsExisting, checkIfElementsAreExisting } = commonUtility;
 
 
 describe('Negative registration tests', () => {
@@ -17,7 +16,7 @@ describe('Negative registration tests', () => {
         await RegistrationUtility.inputRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword)
         await RegistrationUtility.checkRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword)
         await RegistrationPage.btnSubmit.click() 
-        await checkIfElementIsExisting(RegistrationPage.message)
+        await RegistrationPage.message.checkIfElementIsExisting()
     })
 
     it('should not create an account with an invalid email', async () => {
@@ -25,7 +24,7 @@ describe('Negative registration tests', () => {
         await RegistrationUtility.inputRegistrationDetails(FirstName, LastName, InvalidEmail, Password, ConfirmPassword)
         await RegistrationUtility.checkRegistrationDetails(FirstName, LastName, InvalidEmail, Password, ConfirmPassword)
         await RegistrationPage.btnSubmit.click() 
-        await checkIfElementIsExisting(RegistrationPage.emailErrorMessage)
+        await RegistrationPage.emailErrorMessage.checkIfElementIsExisting()
     })
 
     it('should not create an account with an invalid password', async () => {
@@ -33,14 +32,17 @@ describe('Negative registration tests', () => {
         await RegistrationUtility.inputRegistrationDetails(FirstName, LastName, Email, InvalidPassord, ConfirmInvalidPassword)
         await RegistrationUtility.checkRegistrationDetails(FirstName, LastName, Email, InvalidPassord, ConfirmInvalidPassword)
         await RegistrationPage.btnSubmit.click() 
-        await checkIfElementIsExisting(RegistrationPage.passwordErrorMessage)
+        await RegistrationPage.passwordErrorMessage.checkIfElementIsExisting()
     })
 
     it('should not create an account without all requred fileds being filled', async () => {
 
         await RegistrationPage.open()
-        await RegistrationPage.btnSubmit.click() 
-        await checkIfElementsAreExisting(RegistrationPage.errorMessages)
+        await RegistrationPage.btnSubmit.click()
+        await RegistrationPage.emailErrorMessage.checkIfElementIsExisting()
+        await RegistrationPage.passwordErrorMessage.checkIfElementIsExisting()
+        await RegistrationPage.firstNameErrorMessage.checkIfElementIsExisting()
+        await RegistrationPage.lastNameErrorMessage.checkIfElementIsExisting()
     })
 
 })

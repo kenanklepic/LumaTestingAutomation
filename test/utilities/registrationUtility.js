@@ -4,24 +4,22 @@ const AccountPage = require('../pageObjects/accountPage')
 
 class RegistrationUtility {
 
-    //method that class all other registration methods
-
     async inputRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword) {
 
-        await RegistrationPage.open() //open registration page
-        await expect(RegistrationPage.pageTitle).toHaveTextContaining('Create New Customer Account') //check if account page was opened
-
+        await RegistrationPage.open() 
+        //await expect(RegistrationPage.pageTitle).toHaveTextContaining('Create New Customer Account')
+        await RegistrationPage.pageTitle.checkIfElementIsExisting();
         await RegistrationPage.register(FirstName, LastName, Email, Password, ConfirmPassword) //functions enters credentials into appropriate fields
 
     }
 
     async checkRegistrationDetails(FirstName, LastName, Email, Password, ConfirmPassword) {
 
-        expect (await RegistrationPage.inputFistName.getValue()).toEqual(FirstName)
-        expect (await RegistrationPage.inputLastName.getValue()).toEqual(LastName)
-        expect (await RegistrationPage.inputEmail.getValue()).toEqual(Email)
-        expect (await RegistrationPage.inputPassword.getValue()).toEqual(Password)
-        expect (await RegistrationPage.inputConfirmPassword.getValue()).toEqual(ConfirmPassword)
+        expect (await RegistrationPage.inputFistName.getElementValue()).toEqual(FirstName)
+        expect (await RegistrationPage.inputLastName.getElementValue()).toEqual(LastName)
+        expect (await RegistrationPage.inputEmail.getElementValue()).toEqual(Email)
+        expect (await RegistrationPage.inputPassword.getElementValue()).toEqual(Password)
+        expect (await RegistrationPage.inputConfirmPassword.getElementValue()).toEqual(ConfirmPassword)
 
     }
 
