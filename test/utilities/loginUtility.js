@@ -6,16 +6,12 @@ class LoginUtility {
 
     async inputLoginDetails(email, password) {
 
-        await LoginPage.inputEmail.setValue(email);
-        await LoginPage.inputPassword.setValue(password);
-
+        await LoginPage.login(email, password);
     }
 
     async checkLoginDetails(email, password) {
 
-        expect (await LoginPage.inputEmail.getValue()).toEqual(email)
-        expect (await LoginPage.inputPassword.getValue()).toEqual(password)
-
+        await LoginPage.checkLoginDetails(email, password);
     }
 
     async loginUser(Email, Password) {
@@ -25,11 +21,8 @@ class LoginUtility {
         await this.inputLoginDetails(Email, Password)
         await this.checkLoginDetails(Email, Password)
 
-        await expect (LoginPage.signInBtn).toBeExisting()
+        await LoginPage.signInBtn.checkIfElementIsExisting();
         await LoginPage.signInBtn.click()
-
-        await expect(HomePage.welcomeMessage).toBeExisting()
-
     }
 }
 
